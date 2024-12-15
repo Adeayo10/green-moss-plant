@@ -1,0 +1,7 @@
+{
+  "name": "green-moss-plant",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
