@@ -1,0 +1,29 @@
+.register-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f5e9; // Light green background
+  
+    ion-card {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px;
+      background: #a5d6a7; // Light green card background
+      
+      ion-card-header {
+        text-align: center;
+        color: #2e7d32; // Dark green text color
+      }
+  
+      ion-item {
+        margin-bottom: 15px;
+      }
+  
+      ion-button {
+        margin-top: 20px;
+        --background: #00c853; // Brighter green button background
+        --background-hover: #009624; // Darker green on hover
+      }
+    }
+}
