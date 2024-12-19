@@ -1,0 +1,37 @@
+.custom-tabs {
+    --background: #ffffff;
+    --border-color: #e0e0e0;
+  
+    ion-tab-button {
+      --color: #666666;
+      --color-selected: #2e7d32;
+      
+      &.tab-selected {
+        ion-icon {
+          color: var(--color-selected);
+        }
+        ion-label {
+          color: var(--color-selected);
+          font-weight: 600;
+        }
+      }
+  
+      ion-icon {
+        font-size: 24px;
+      }
+  
+      ion-label {
+        font-size: 12px;
+      }
+    }
+  }
+  
+  // Optional animation
+  ion-tab-button {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      --color: #2e7d32;
+      transform: scale(1.05);
+    }
+  }

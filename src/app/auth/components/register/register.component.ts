@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-// import { ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    // private toastController: ToastController
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -41,22 +41,23 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       try {
         await this.authService.register(this.registerForm.value);
+        await this.showToast('Registration successful!');
         await this.router.navigate(['/auth/login']);
-        alert('Registration successful!');
-        // await this.showToast('Registration successful!');
-      } catch (error) {
-        // await this.showToast('Registration failed: ' + error.message);
-        alert("Registration failed: ");
+        //alert('Registration successful!');
+       
+      } catch (error: any) {
+        await this.showToast(`Registration failed: ${error.message}`);
+        //alert("Registration failed: ");
       }
     }
   }
 
-  // private async showToast(message: string) {
-  //   const toast = await this.toastController.create({
-  //     message,
-  //     duration: 2000,
-  //     position: 'bottom'
-  //   });
-  //   await toast.present();
-  // }
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'bottom'
+    });
+    await toast.present();
+  }
 }
