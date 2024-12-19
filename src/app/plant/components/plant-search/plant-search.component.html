@@ -1,0 +1,20 @@
+<!-- <ion-header>
+    <ion-toolbar>
+      <ion-title>Search Plants</ion-title>
+    </ion-toolbar>
+  </ion-header>
+   -->
+  <ion-content>
+    <ion-searchbar (ionInput)="onSearchChange($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let plant of results" [routerLink]="['/plants', plant.id]">
+        <ion-thumbnail slot="start">
+          <img [src]="plant.imageUrl" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ plant.name }}</h2>
+          <p>{{ plant.scientificName }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>

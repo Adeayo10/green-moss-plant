@@ -1,0 +1,72 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #e8f5e9; // Light green background
+
+  ion-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    background: #c8e6c9; // Slightly lighter green card background for better contrast
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    ion-card-header {
+      text-align: center;
+      color: #1b5e20; // Darker green text color for better readability
+      position: sticky;
+      top: -100px; // Adjust this value to hide the header
+      transition: top 0.3s; // Smooth transition
+    }
+
+    ion-card-content {
+      text-align: center;
+
+      p {
+        margin-bottom: 20px;
+        color: #388e3c; // Slightly darker green text color for better readability
+      }
+
+      ion-button {
+        --background: #43a047; // Slightly darker green button background for better contrast
+        --background-hover: #2e7d32; // Darker green on hover
+      }
+    }
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    background: #1b5e20; // Darker green toolbar background for better contrast
+    color: white; // White text color
+
+    ion-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  &.condense {
+    ion-toolbar {
+      ion-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+ion-footer {
+  background: #1b5e20; // Darker green footer background for better contrast
+  color: white; // White text color
+  text-align: center;
+  padding: 10px;
+
+  ion-button {
+    --background: #43a047; // Slightly darker green button background for better contrast
+    --background-hover: #2e7d32; // Darker green on hover
+    margin: 0 10px;
+  }
+}

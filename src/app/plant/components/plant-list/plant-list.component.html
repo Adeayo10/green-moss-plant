@@ -1,0 +1,20 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Plant List</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <app-category-filter (categorySelected)="filterPlants($event)"></app-category-filter>
+  <ion-list>
+    <ion-item *ngFor="let plant of filteredPlants" [routerLink]="['/tabs/plants', plant.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="plant.imageUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ plant.name }}</h2>
+        <p>{{ plant.scientificName }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

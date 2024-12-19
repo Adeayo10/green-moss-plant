@@ -13,10 +13,10 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
-      // {
-      //   path: 'plants',
-      //   loadChildren: () => import('../plants/plants.module').then(m => m.PlantsModule)
-      // },
+      {
+        path: 'plants',
+        loadChildren: () => import('../plant/plant.module').then(m => m.PlantPageModule)
+      },
       // {
       //   path: 'cart',
       //   loadChildren: () => import('../cart/cart.module').then(m => m.CartModule)

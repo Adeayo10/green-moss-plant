@@ -1,0 +1,5 @@
+<ion-segment (ionChange)="selectCategory($event)">
+  <ion-segment-button *ngFor="let category of categories" [value]="category">
+    {{ category }}
+  </ion-segment-button>
+</ion-segment>

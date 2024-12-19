@@ -1,0 +1,90 @@
+:host(.plant-list-host) {
+    display: block;
+    padding: 16px;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+}
+
+.plant-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plant-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: #e0f7fa;
+        transform: translateY(-2px);
+    }
+}
+
+.plant-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.plant-details {
+    flex-grow: 1;
+
+    .plant-name {
+        font-size: 1.4em;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+    }
+
+    .plant-description {
+        font-size: 1em;
+        color: #666;
+        margin-top: 4px;
+    }
+}
+
+.plant-actions {
+    display: flex;
+    gap: 8px;
+
+    button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &.edit {
+            background-color: #4caf50;
+            color: #fff;
+
+            &:hover {
+                background-color: #45a049;
+            }
+        }
+
+        &.delete {
+            background-color: #f44336;
+            color: #fff;
+
+            &:hover {
+                background-color: #e53935;
+            }
+        }
+    }
+}

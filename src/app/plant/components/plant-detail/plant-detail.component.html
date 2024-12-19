@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/plants"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ plant?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="plant">
+  <ion-card>
+    <img [src]="plant.imageUrl" />
+    <ion-card-header>
+      <ion-card-title>{{ plant.name }}</ion-card-title>
+      <ion-card-subtitle>{{ plant.scientificName }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ plant.description }}</p>
+      <ion-item>
+        <ion-label>Price</ion-label>
+        <ion-note slot="end">{{ plant.price | currency }}</ion-note>
+      </ion-item>
+      <ion-button expand="full" (click)="addToCart(plant)">Add to Cart</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
