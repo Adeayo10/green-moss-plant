@@ -17,11 +17,11 @@ const routes: Routes = [
         path: 'plants',
         loadChildren: () => import('../plant/plant.module').then(m => m.PlantPageModule)
       },
-      // {
-      //   path: 'cart',
-      //   loadChildren: () => import('../cart/cart.module').then(m => m.CartModule)
-      // },
-      // {
+      {
+        path: 'cart',
+        loadChildren: () => import('../cart/cart.module').then(m => m.CartPageModule)
+      },
+      //{
       //   path: 'profile',
       //   loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
       // },
