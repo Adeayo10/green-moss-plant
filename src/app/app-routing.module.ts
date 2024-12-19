@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'tabs/home'
+  },
+  {
+    path: 'plant',
+    loadChildren: () => import('./plant/plant.module').then( m => m.PlantPageModule)
   }
 ];
 
