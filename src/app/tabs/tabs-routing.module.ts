@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../auth/guards/auth.guard';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../auth/guards/auth.guard';//remove this if you dont' want to go through auth guard
 
 const routes: Routes = [
   {
     path: '',
     component: TabsPage,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard],//remove this if you dont' want to go through auth guard
     children: [
       {
         path: 'home',
@@ -24,6 +24,10 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
+        path: 'delivery',
+        loadChildren: () => import('../delivery/delivery.module').then(m => m.DeliveryPageModule)
       },
       {
         path: '',

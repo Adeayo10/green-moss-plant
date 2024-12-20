@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Delivery Tracking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div *ngIf="currentPosition">
+      <p>Latitude: {{ currentPosition.coords.latitude }}</p>
+      <p>Longitude: {{ currentPosition.coords.longitude }}</p>
+    </div>
+    <div *ngIf="!currentPosition">
+      <p>Loading current position...</p>
+    </div>
+  </ion-content>
