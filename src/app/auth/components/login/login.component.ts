@@ -1,16 +1,14 @@
-
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {ToastController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent {
   loginForm: FormGroup;
 
@@ -26,32 +24,62 @@ export class LoginComponent {
     });
   }
 
-  async onSubmit() { 
-    try {
+  // async onSubmit() {
+  //   if (this.loginForm.invalid) {
+  //     this.showToast('Please enter valid credentials');
+  //     return;
+  //   }
 
+  //   const { email, password } = this.loginForm.value;
+  //   console.log('Attempting login...');
+
+  //   try {
+  //     const success = await this.authService.login({ email, password });
+  //     if (success) {
+  //       console.log('Login successful');
+  //       await Promise.all([
+  //         this.showToast('Login successful'),
+  //         this.router.navigate(['/tabs/home'])
+  //       ]);
+  //     } else {
+  //       console.log('Login failed');
+  //       await this.showToast('Login failed');
+  //     }
+  //   } catch (error: any) {
+  //     console.error('Login error:', error);
+  //     await this.showToast(`Login failed: ${error.message}`);
+  //   }
+  // }
+
+
+    async onSubmit() {
       if (this.loginForm.invalid) {
-        this.showToast('Please enter valid credentials');
+        await this.showToast('Please enter valid credentials');
         return;
       }
-      const { email, password } = this.loginForm.value;
-      const success =  this.authService.login({ email, password });
-      if (!success) {
+  
+      try {
+        const success = await this.authService.login(this.loginForm.value);
+        
+        if (success) {
+          await this.showToast('Login successful');
+          await this.router.navigate(['/tabs/home'], { replaceUrl: true });
+        } else {
+          await this.showToast('Invalid credentials');
+        }
+      } catch (error) {
+        console.error('Login error:', error);
         await this.showToast('Login failed');
-      } else {
-        await this.showToast('Login successful');
       }
-      await this.router.navigate(['/tabs/home']);
-     
-    }catch (error: any) {
-      await this.showToast(`Login failed: ${error.message}`);
     }
+    
+  
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top'
+    });
+    await toast.present();
   }
-private async showToast(message: string) {
-  const toast = await this.toastController.create({
-    message,
-    duration: 2000,
-    position: 'top'
-  });
-  await toast.present();
-}
 }
