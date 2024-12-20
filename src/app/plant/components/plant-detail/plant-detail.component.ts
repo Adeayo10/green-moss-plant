@@ -1,7 +1,9 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlantService } from '../../services/plant.service';
-import { Plant } from '../../models/plant.model';
+import { Plant, Review } from '../../models/plant.model';
 import { CartService } from '../../../cart/services/cart.service';
 
 @Component({
@@ -11,11 +13,12 @@ import { CartService } from '../../../cart/services/cart.service';
 })
 export class PlantDetailComponent implements OnInit {
   plant: Plant | undefined;
+  newReview: Review = { userId: '', rating: 0, comment: '', date: new Date() };
 
   constructor(
     private route: ActivatedRoute,
     private plantService: PlantService,
-    private cartService: CartService 
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -29,18 +32,25 @@ export class PlantDetailComponent implements OnInit {
         this.plant = plant;
       });
     }
-
   }
 
   addToCart() {
     if (this.plant) {
-      console.log("adding to cart",this.plant)
       this.cartService.addToCart({
         plantId: this.plant.id,
         name: this.plant.name,
         price: this.plant.price,
         quantity: 1,
         imageUrl: this.plant.imageUrl
+      });
+    }
+  }
+
+  addReview() {
+    if (this.plant) {
+      this.plantService.addReview(this.plant.id, this.newReview).subscribe(updatedPlant => {
+        this.plant = updatedPlant;
+        this.newReview = { userId: '', rating: 0, comment: '', date: new Date() };
       });
     }
   }

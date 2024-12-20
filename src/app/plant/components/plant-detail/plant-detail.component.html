@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -21,6 +22,41 @@
         <ion-note slot="end">{{ plant.price | currency }}</ion-note>
       </ion-item>
       <ion-button expand="full" (click)="addToCart()">Add to Cart</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Care Guide</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Watering:</strong> {{ plant.careGuide.watering }}</p>
+      <p><strong>Sunlight:</strong> {{ plant.careGuide.sunlight }}</p>
+      <p><strong>Temperature:</strong> {{ plant.careGuide.temperature }}</p>
+      <p><strong>Fertilizing:</strong> {{ plant.careGuide.fertilizing }}</p>
+      <p><strong>Pest Control:</strong> {{ plant.careGuide.pestControl }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Reviews</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let review of plant.reviews">
+        <ion-label>
+          <h2>{{ review.userId }}</h2>
+          <p>{{ review.comment }}</p>
+          <ion-note>{{ review.rating }} stars</ion-note>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Add a Review</ion-label>
+        <ion-input [(ngModel)]="newReview.userId" placeholder="Your Name"></ion-input>
+        <ion-input [(ngModel)]="newReview.rating" type="number" placeholder="Rating (1-5)"></ion-input>
+        <ion-textarea [(ngModel)]="newReview.comment" placeholder="Your Review"></ion-textarea>
+        <ion-button expand="full" (click)="addReview()">Submit</ion-button>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

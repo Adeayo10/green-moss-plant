@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Plant } from '../models/plant.model';
+import { Plant, Review } from '../models/plant.model';
 
 import { MOCK_PLANTS } from '../plantdb';
 
@@ -23,7 +23,14 @@ export class PlantService {
         const filteredPlants = MOCK_PLANTS.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
         return of(filteredPlants);
     }
-    addToCart(plant: Plant) {
-        console.log('Plant added to cart:', plant);
-    }
+    // addToCart(plant: Plant) {
+    //     console.log('Plant added to cart:', plant);
+    // }
+    addReview(plantId: string, review: Review): Observable<Plant> {
+        const plant = MOCK_PLANTS.find(p => p.id === plantId);
+        if (plant) {
+          plant.reviews.push(review);
+        }
+        return of(plant as Plant);
+      }
 }
