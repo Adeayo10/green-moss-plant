@@ -8,7 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class CategoryFilterComponent {
   @Output() categorySelected = new EventEmitter<string>();
 
-  categories = ['All', 'Indoor', 'Outdoor', 'Succulents', 'Flowering'];//
+  categories = ['All', 'Indoor', 'Outdoor'];//
 
   selectCategory(event: any) {
     const category = event.detail.value as string;

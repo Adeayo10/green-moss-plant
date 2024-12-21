@@ -1,18 +1,23 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'green-moss-plant',
   webDir: 'www',
-  server: {
-    hostname: 'localhost',
-    androidScheme: 'https',
-    iosScheme: 'ionic',
-   // url: 'http://192.168.1.X:8100', // Replace X with your local IP
-    cleartext: true
-  },
-  ios: {
-    limitsNavigationsToAppBoundDomains: false
+  bundledWebRuntime: false,
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 5000,
+      launchAutoHide: true,
+      backgroundColor: "#ffffff",
+      androidSplashResourceName: "splash",
+      showSpinner: true,
+      androidSpinnerStyle: "large",
+      iosSpinnerStyle: "small",
+      spinnerColor: "#999999",
+      splashFullScreen: true,
+      splashImmersive: true
+    }
   }
 };
 
